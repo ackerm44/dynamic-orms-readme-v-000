@@ -22,12 +22,11 @@ class Song
     end
 
     column_names.compact
-
+    
   end
 
   self.column_names.each do |col_name|
-    testing = attr_accessor col_name.to_sym
-    puts testing
+    attr_accessor col_name.to_sym
   end
 
   def initialize(options={})
@@ -59,8 +58,9 @@ class Song
   end
 
   def self.find_by_name(name)
-    sql = "SELECT * FROM #{self.table_name} WHERE name = '#{name}'"
-    DB[:conn].execute(sql)
+    #sql = "SELECT * FROM #{self.table_name} WHERE name = '#{name}'"
+    sql = "SELECT * FROM #{self.table_name} WHERE name = ?"
+    DB[:conn].execute(sql, self.name)
   end
 
 end
