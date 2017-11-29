@@ -11,6 +11,6 @@ puts "song year: " + song.year
 song.save
 
 find = Song.find_by_name('Hello')
-puts #{find}
+puts "Found: #{find}""
 
 DB[:conn].execute("SELECT * FROM songs")
